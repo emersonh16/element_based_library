@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Library</title>
+</head>
+<body>
+    <h1>E's Elemental Library</h1>
+    <button id="newBookButton" onclick="openForm()">Click to add a new Book</button>
+    <br>
+    <div class="form-popup" id="myForm">
+          <h1>Add Book</h1>
+          <form id="bookForm">
+            <label for="bookTitle">Book Title</label>
+            <input type="text" id="bookTitle" name="bookTitle"/>
+            
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
+            
+            <label for="pages">How many Pages?</label>
+            <input type="number" id="pages" name="pages"><br>
+                    
+            <input type="radio" id="haveRead" name="readQuery" value="true">
+            <label for="haveRead">Read</label><br>
+                    
+            <input type="radio" id="notRead" name="readQuery" value="false">
+            <label for="notRead">Not Read</label><br>
+    
+            <input type="submit" onclick="onSubmit(event)">
+    
+        </form>
+      </div>
+      <br>
+    <div id="bookDisplay"></div>
+    <br>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
