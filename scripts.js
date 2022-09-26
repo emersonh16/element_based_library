@@ -17,6 +17,7 @@ function displayBooks() {
     let display = document.getElementById("bookDisplay")
     let readDisplay = ""
     for (i = 0; i < myLibrary.length; i++) {
+
         if (myLibrary[i].readStatus == true) {
             readDisplay = " read."
         }
@@ -24,7 +25,16 @@ function displayBooks() {
             readDisplay = " not read."
         }
 
-        display.innerText += myLibrary[i].title + ", by " + myLibrary[i].author + ", " + myLibrary[i].pages + " pages," + readDisplay
+        let bookBox = document.createElement("div");
+        let deleteButton = document.createElement("BUTTON");
+        deleteButton.innerHTML = "Remove Book";
+
+        bookBox.setAttribute("data-bookNumber", i)
+        
+        bookDisplay.appendChild(bookBox)
+        bookBox.appendChild(deleteButton)
+
+        bookBox.innerText = myLibrary[i].title + ", by " + myLibrary[i].author + ", " + myLibrary[i].pages + " pages," + readDisplay
         display.innerHTML += "<br>"
     }
 }
@@ -38,19 +48,20 @@ function onSubmit(event) {
 
     let y
 
-    if (userInputRead == true){
+    if (userInputRead == true) {
         y = true
     }
-    else if (userInputRead == false){
+    else if (userInputRead == false) {
         y = false
     }
-    
+
 
     x = new book(userInputBooktitle, userInputAuthor, userInputPages, y)
     document.getElementById("bookDisplay").innerHTML = ""
     addBookToLibrary(x)
     displayBooks()
-    
+    closeForm()
+
 }
 
 function openForm() {
