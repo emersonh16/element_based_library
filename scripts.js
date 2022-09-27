@@ -26,17 +26,21 @@ function displayBooks() {
         }
 
         let bookBox = document.createElement("div");
-        let deleteButton = document.createElement("BUTTON");
-        deleteButton.innerHTML = "Remove Book";
-
         bookBox.setAttribute("data-bookNumber", i)
-        
         bookDisplay.appendChild(bookBox)
+
+        let deleteButton = document.createElement("BUTTON")
+        deleteButton.innerHTML = "Remove Book"
         bookBox.appendChild(deleteButton)
 
-        bookBox.innerText = myLibrary[i].title + ", by " + myLibrary[i].author + ", " + myLibrary[i].pages + " pages," + readDisplay
+        bookBox.innerHTML += myLibrary[i].title + ", by " + myLibrary[i].author + ", " + myLibrary[i].pages + " pages," + readDisplay
         display.innerHTML += "<br>"
     }
+}
+
+function deleteBook(x) {
+    x.remove()
+
 }
 
 function onSubmit(event) {
@@ -62,6 +66,10 @@ function onSubmit(event) {
     displayBooks()
     closeForm()
 
+    document.getElementById("bookTitle").value = ""
+    document.getElementById("author").value = ""
+    document.getElementById("pages").value = ""
+    document.querySelector('input[name="readQuery"]:checked').value = ""
 }
 
 function openForm() {
